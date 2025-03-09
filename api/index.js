@@ -12,12 +12,11 @@ app.get('/', (req, res) => {
 
 // First endpoint - returns 200 with specific headers
 app.get('/first', (req, res) => {
-  res.status(200)
-     .set('Content-Type', 'application/json')
-     .set('Authorization', 'Bearer token123')
-     .send();
+  res.statusCode = 200; // Set status code
+  res.setHeader('Content-Type', 'application/json'); // Set Content-Type without charset
+  res.setHeader('Authorization', 'Bearer token123'); // Set other headers
+  res.end(); // End the response without using res.send()
 });
-
 // Second endpoint - returns 400 with specific headers and body
 app.get('/second', (req, res) => {
   res.status(400)
