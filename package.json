@@ -1,0 +1,19 @@
+{
+  "name": "api-challenge",
+  "version": "1.0.0",
+  "description": "API challenge for competition",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "node api/index.js",
+    "dev": "nodemon api/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
