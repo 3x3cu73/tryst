@@ -19,13 +19,22 @@ app.get('/first', (req, res) => {
 });
 // Second endpoint - returns 400 with specific headers and body
 app.get('/second', (req, res) => {
+  const data = {
+    param1: 'value1',
+    param2: 'value2'
+  };
+
+  const jsonData = JSON.stringify(data);
+  const buffer = Buffer.from(jsonData, 'utf8');
+
   res.status(400)
-     .set('Content-Type', 'application/json')
-     .set('Authorization', 'Bearer token123')
-     .json({
-       param1: 'value1',
-       param2: 'value2'
-     });
+     .setHeader('Content-Type', 'application/json')
+     .setHeader('Authorization', 'Bearer token123')
+     .writeHead(400, {
+       'Content-Type': 'application/json',
+       'Authorization': 'Bearer token123'
+     })
+     .end(buffer);
 });
 
 // For local development
